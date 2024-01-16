@@ -1,38 +1,33 @@
 #!/usr/bin/python3
 '''minimum operations coding challenge.
 '''
-
-
-def min_operations(n):
-    """this Computes the fewest number of operations needed to result
-    in exactly n H characs.
-    """
-    if not isinstance(n, int) or n <= 0:
+def minOperations(n):
+    '''this Computes the fewest number of operations needed to result
+    in exactly n H characters.
+    '''
+    if not isinstance(n, int):
         return 0
-
-    operations_count = 0
-    clipboard = 0
+    count = 0
+    cb = 0
     done = 1
-
+    # print('H', end='')
     while done < n:
-        if clipboard == 0:
-            # Initialization (the first copy all and paste)
-            clipboard = done
-            done += clipboard
-            operations_count += 2
+        if cb == 0:
+            # initialized (the first copy all and paste)
+            cb = done
+            done += cb
+            count += 2
+            # print('-(11)->{}'.format('H' * done), end='')
         elif n - done > 0 and (n - done) % done == 0:
-            # Copy all and paste
-            clipboard = done
-            done += clipboard
-            operations_count += 2
-        elif clipboard > 0:
-            # Paste
-            done += clipboard
-            operations_count += 1
-
-    return operations_count
-
-# Example usage:
-result = min_operations(10)
-print(result)
-
+            # copy and paste all
+            cb = done
+            done += cb
+            count += 2
+            # print('-(11)->{}'.format('H' * done), end='')
+        elif cb > 0:
+            # paste
+            done += cb
+            count += 1
+            # print('-(01)->{}'.format('H' * done), end='')
+    # print('')
+    return count
