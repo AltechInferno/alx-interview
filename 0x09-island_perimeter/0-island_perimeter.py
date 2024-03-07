@@ -2,8 +2,11 @@
 """Island perimeter computing
 """
 
+
 def island_perimeter(grid):
+
     perimeter = 0
+
     if not isinstance(grid, list):
         return 0
 
@@ -20,4 +23,3 @@ def island_perimeter(grid):
                     perimeter -= 2
 
     return perimeter
-
